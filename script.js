@@ -15,3 +15,25 @@ galleryItems.forEach(img => {
         console.log("Photo clicked:", img.src);
     });
 });
+
+// ==== Tab Control Logic ====
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabPanes = document.querySelectorAll('.tab-pane');
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons and panes
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+        
+        // Add active to the clicked button
+        btn.classList.add('active');
+        
+        // Find respective tab pane and add active
+        const targetId = btn.getAttribute('data-tab');
+        const targetPane = document.getElementById(targetId);
+        if (targetPane) {
+            targetPane.classList.add('active');
+        }
+    });
+});
